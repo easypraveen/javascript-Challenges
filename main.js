@@ -130,3 +130,154 @@
 
 // console.log(arr)
 
+// CallBack Hell
+
+//Promise
+
+// const p1 = new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//     resolve("p1 resolved");
+//     //reject("p1 rejected")
+//     },10000)
+// })
+
+// const p2 = new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//     resolve("p2 resolved");
+//     //reject("p2 rejected")
+//     },20000)
+// })
+
+// const p3 = new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//         resolve("p3 resolved");
+//         //reject("p3 rejected")
+//         },30000)
+// })
+
+//promise.all() method
+// Promise.all([p1,p2,p3]).then((res) => {
+//     console.log(res)
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+//promis.allSettled() method
+// Promise.allSettled([p1,p2,p3]).then((res) => {
+//     console.log(res)
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+//promise.race() method
+// Promise.race([p1,p2,p3]).then((res) => {
+//     console.log(res)
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+//promise.any() method
+// Promise.any([p1,p2,p3]).then((res) => {
+//     console.log(res)
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+// const APP_URL = 'https://api.github.com/users/easypraveen'
+
+
+// const data = fetch(APP_URL)
+
+// data
+// .then((res) => res.json())
+// .then((data) => console.log(data))
+// .catch((err) => console.log(err))
+
+
+// let user = {
+//     name: "praveen",
+//     age: 20,
+// }
+
+// let printDetails = function(city,state){
+//     console.log(`my name is ${this.name} and my age is ${this.age}, I am from ${city} ${state}.`)
+// }
+
+// let user2 = {
+//     name: "john",
+//     age: 25,
+// }
+
+// let printDetails2 = printDetails.bind(user2, "agra", "uttarpradesh")
+// printDetails2()
+
+//pollyfill for bind method
+// Function.prototype.mybind = function(...args){
+//     let obj = this;
+//     let params = args.slice(1)
+//     return function(...args2){
+//         //obj.apply(args[0],[...params,...args2])
+//         obj.call(args[0],...params,...args2)
+//     }
+// }
+
+// let printDetails2 = printDetails.mybind(user2, "agra")
+// printDetails2("uttarpradesh")
+
+//pollyfill for call method
+// Function.prototype.mycall = function(...args){
+//     let obj = this;
+//     obj.call(args[0],...args.slice(1))
+// }
+
+// let printDetails = function(city,state){
+//     console.log(`my name is ${this.name} and my age is ${this.age}, I am from ${city} ${state}.`)
+// }
+
+// let user3 = {
+//     name: "john",
+//     age: 25,
+// }
+// printDetails.mycall(user3, "agra", "uttarpradesh")
+
+//pollyfill for apply method
+// Function.prototype.myapply = function(context,args){
+//     console.log(...args)
+//     context.fn = this;
+//     context.fn(...args)
+// }
+
+// let printDetails = function(city,state){
+//     console.log(`my name is ${this.name} and my age is ${this.age}, I am from ${city} ${state}.`)
+// }
+
+// let user3 = {
+//     name: "john",
+//     age: 25,
+// }
+// printDetails.myapply(user3, ["agra", "uttarpradesh"])
+
+//debouncing method
+// let count = 0
+// let getData = (query) => {
+//     if(query.trim() === ''){
+//         return;
+//     }
+//    console.log("Fetching Data..." + count++ + " " + query)
+// }
+
+// const debounce = function (fn, delay) {
+//     let timer;
+//     return function (){
+//         let context = this,
+//         args = arguments;
+//         clearTimeout(timer)
+//         timer = setTimeout(() => {
+//             fn.apply(context,arguments)
+//         },delay)
+//     }
+// }
+
+// let betterFunction = debounce(getData,5000)
+// betterFunction("praveen", "singh")
+
